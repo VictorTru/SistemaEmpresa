@@ -5,6 +5,8 @@
  */
 package com.pe.victor.service;
 
+import com.pe.victor.dao.VentaDao;
+import com.pe.victor.dao.impl.VentaDaoImpl;
 import com.pe.victor.entity.Categoria;
 import com.pe.victor.entity.Venta;
 import java.util.List;
@@ -13,7 +15,16 @@ import java.util.List;
  *
  * @author 51923
  */
-public interface VentaService {
-    public int grabar(Venta venta);
+public class VentaService {
+    
+    VentaDao dao;
+    
+    public VentaService(){
+        dao = new VentaDaoImpl();
+    }
+    
+    public int grabar(Venta venta) throws Exception{
+        return dao.registrar(venta);
+    }
     
 }
